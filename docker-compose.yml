@@ -1,0 +1,18 @@
+services:
+  app:
+    container_name: next-app
+    image: dsp4next
+    build:
+      context: .
+      dockerfile: dockerfile
+    restart: always
+
+  nginx:
+    container_name: next-app-nginx
+    build:
+      context: ./nginx
+      dockerfile: dockerfile
+    ports:
+      - 2024:80
+    depends_on:
+      - app
