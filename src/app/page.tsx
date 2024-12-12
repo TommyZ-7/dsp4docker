@@ -29,19 +29,19 @@ export default function Home() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 p-0 overflow-hidden ">
         <button
-          className="p-0 overflow-hidden m-6 hover:border-2 border-black"
+          className="p-0 overflow-hidden m-6 border-2 border-white hover:border-2 hover:border-black"
           onClick={() => router.push('./question/easy')}
         >
           <Image src={easy} alt="easy" width={300} height={300} />
         </button>
         <button
-          className="p-0 overflow-hidden m-6 hover:border-2 border-black"
+          className="p-0 overflow-hidden m-6 border-2 border-white hover:border-2 hover:border-black"
           onClick={() => router.push('./question/normal')}
         >
           <Image src={norm} alt="easy" width={300} height={300} />
         </button>
         <button
-          className="p-0 overflow-hidden m-6 hover:border-2 border-black"
+          className="p-0 overflow-hidden m-6 border-2 border-white hover:border-2 hover:border-black"
           onClick={() => router.push('./question/hard')}
         >
           <Image src={hard} alt="easy" width={300} height={300} />

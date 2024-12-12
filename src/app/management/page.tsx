@@ -29,7 +29,28 @@ export default function Home() {
             問題編集
           </p>
         </button>
+        <button
+          className="border border-gray-800 p-0 overflow-hidden m-2"
+          onClick={() => router.push('./management/dbexport')}
+        >
+          <p
+            className={`p-5 bg-red-400 text-black h-full flex items-center justify-center xl:text-6xl sm:text-6xl text-5xl hover:bg-red-600`}
+          >
+            DB出力
+          </p>
+        </button>
+        <button
+          className="border border-gray-800 p-0 overflow-hidden m-2"
+          onClick={() => router.push('./management/dballimport')}
+        >
+          <p
+            className={`p-5 bg-red-400 text-black h-full flex items-center justify-center xl:text-6xl sm:text-6xl text-5xl hover:bg-red-600`}
+          >
+            DB入力
+          </p>
+        </button>
       </div>
+
       <Button color="primary" variant="bordered" onClick={() => router.push('/')}>
         最初に戻る
       </Button>

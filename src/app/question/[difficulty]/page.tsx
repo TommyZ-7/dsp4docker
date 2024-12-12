@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { use, useState } from 'react';
 
 import { useParams, useRouter } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -50,7 +50,7 @@ export default function Home() {
   const diff = pathname.difficulty.toString();
   const router = useRouter();
   const bgi = '/images/back.png';
-  const mapi = '/images/map.jpg';
+  const [mapi, setMapi] = useState<string>('/images/map1.jpg');
   const [maxPage, setMaxPage] = useState<number>(0);
   const [pageMug, setPageMug] = useState<number>(0);
   const [hoverButton, setHoverButton] = useState<number>(0);
@@ -88,7 +88,7 @@ export default function Home() {
 
       <div className="grid grid-cols-2 z-[2]">
         <div className="grid-cols-1">
-          <p className="text-black">
+          <p className="text-black text-center text-5xl">
             {diff === 'easy'
               ? 'かんたん'
               : diff === 'normal'
@@ -108,22 +108,23 @@ export default function Home() {
                         &nbsp;
                       </p>
                     ) : (
-                      <button
-                        onClick={() =>
-                          router.push('/question/' + diff + '/' + dataList[index].uuid)
-                        }
-                        onMouseEnter={() => {
-                          setHoverButton(index);
-                          console.log(index);
-                        }}
-                      >
-                        <p
-                          className="text-xl  m-3 md:text-3xl border-3 border-black"
-                          style={{ color: 'black' }}
+                      <>
+                        <button
+                          onClick={() =>
+                            router.push('/question/' + diff + '/' + dataList[index].uuid)
+                          }
+                          onMouseEnter={() => {
+                            setMapi('/images/map' + (index + 1 - pageMug * 5) + '.jpg');
+                            console.log(index);
+                          }}
+                          className="w-11/12 border-2 rounded-lg border-orange-500 m-2 hover:bg-orange-300"
                         >
-                          {dataList[index]?.name}
-                        </p>
-                      </button>
+                          <p className="text-xl abs m-3 md:text-6xl " style={{ color: 'black' }}>
+                            {dataList[index]?.name}
+                          </p>
+                        </button>
+                        <br />
+                      </>
                     )}
                   </div>
                 ))}
@@ -135,21 +136,21 @@ export default function Home() {
           )}
           <div className="grid grid-cols-4 w-full">
             <div className="grid-cols-1"></div>
-            <div className="grid-cols-1 justify-center">
+            <div className="grid-cols-1 text-center">
               {pageMug === 0 ? (
                 <p></p>
               ) : (
                 <button onClick={() => setPageMug(pageMug - 1)}>
-                  <AiFillCaretLeft />
+                  <p className="text-3xl">◀</p>
                 </button>
               )}
             </div>
-            <div className="grid-cols-1 justify-center">
+            <div className="grid-cols-1 text-center">
               {pageMug === maxPage ? (
                 <p></p>
               ) : (
                 <button onClick={() => setPageMug(pageMug + 1)}>
-                  <AiFillCaretRight />
+                  <p className="text-3xl">▶</p>
                 </button>
               )}
             </div>
@@ -158,21 +159,6 @@ export default function Home() {
         </div>
         <div className="grid-cols-1">
           <Image className="" src={mapi} alt="title" width={800} height={800} />
-          <p className="text6xl" style={{ color: hoverButton % 5 === 0 ? 'yellow' : 'black' }}>
-            ・
-          </p>
-          <p className="text6xl" style={{ color: hoverButton % 5 === 1 ? 'yellow' : 'black' }}>
-            ・
-          </p>
-          <p className="text6xl" style={{ color: hoverButton % 5 === 2 ? 'yellow' : 'black' }}>
-            ・
-          </p>
-          <p className="text6xl" style={{ color: hoverButton % 5 === 3 ? 'yellow' : 'black' }}>
-            ・
-          </p>
-          <p className="text6xl" style={{ color: hoverButton % 5 === 4 ? 'yellow' : 'black' }}>
-            ・
-          </p>
         </div>
       </div>
     </main>
