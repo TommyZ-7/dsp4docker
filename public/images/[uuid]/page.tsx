@@ -5,7 +5,6 @@ import { fetchActions } from './dataFetch';
 import { fetchQuedata } from './quedataFetch';
 import { Button } from '@nextui-org/react';
 import { Divider } from '@nextui-org/react';
-import Image from 'next/image';
 
 import { League_Gothic, Noto_Sans_JP } from 'next/font/google';
 
@@ -67,8 +66,6 @@ export default function Home() {
   const [selected, setSelected] = useState<string>('');
 
   const router = useRouter();
-
-  const boximage = '/images/box.png';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -155,32 +152,40 @@ export default function Home() {
   }
   return (
     <div>
-      <div>問題名 {queData?.name}</div>
-      <div>問 {id}/5</div>
-      <div className="text-center">{data[id - 1]?.question}</div>
-      <div
-        className="grid grid-cols-1 md:grid-cols-2 overflow-hidden  p-4"
-        style={{ height: '50vh' }}
-      >
+      <h1 className={`bg-blue-600 text-white text-4xl col-span-1 ${quefonts.className}`}>
+        問{id}/5
+      </h1>
+      <br />
+      <h1 className="text-4xl text-center">{queData?.name}</h1>
+      <br />
+
+      <h2 className="text-center text-4xl sm:text-6xl">{data[id - 1].question}</h2>
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <Divider />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 p-0 overflow-hidden ">
         {data[id - 1].list.split('/$').map((item, index) => {
           return (
             <button
               key={index}
-              className="border border-orange-500 rounded-3xl p-0 m-2 relative"
+              className="grid grid-cols-6 border border-gray-800 p-0 overflow-hidden m-2"
               onClick={() => handlePress((index + 1).toString(), item)}
             >
               <p
-                className={`rounded-3xl p-0 bg-slate-100 text-black h-full flex items-center justify-center xl:text-10xl sm:text-7xl text-5xl ${quefonts.className} hover:bg-orange-300`}
+                className={`p-0 col-span-1 bg-blue-600 text-white aspect-square lg:text-[159px] sm:text-9xl text-8xl sm:-mb-5 -mb-3 items-end text-center ${numfonts.className}`}
+              >
+                {index + 1}
+              </p>
+              <p
+                className={`p-0 col-span-5 bg-slate-100 text-black h-full flex items-center justify-center xl:text-10xl sm:text-7xl text-5xl ${quefonts.className} hover:bg-sky-500`}
               >
                 {item}
               </p>
-              <Image
-                src={boximage}
-                alt="box"
-                width={100}
-                height={100}
-                className="absolute bottom-0 right-0"
-              />
             </button>
           );
         })}
