@@ -38,6 +38,11 @@ type QueData1 = {
   deletekey: string;
   difficulty: string;
 };
+type animationData = {
+  x: number;
+  y: number;
+  rotate: number;
+};
 
 const numfonts = League_Gothic({
   subsets: ['latin'],
@@ -69,6 +74,8 @@ export default function Home() {
   const router = useRouter();
 
   const boximage = '/images/box.png';
+  const wavesimage = '/images/waves.png';
+  const kaizokuimage = '/images/kaizokusen.png';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -119,6 +126,67 @@ export default function Home() {
     }
   };
 
+  const imageChanger = (id: number) => {
+    switch (id) {
+      case 1:
+        return (
+          <>
+            
+          </>
+        );
+      case 2:
+        return (
+          <>
+            <Image className='absolute translate-x-3/4 animate-vibrate-1' 
+              src="/images/takara02.png" alt="box" width={300} height={300}
+              sizes="(max-width: 100px)10vw, (max-width: 100px) 50vw, 33vw"
+              style={{ width: '15%', height: 'auto', bottom: "-5%", left: "70%" }}
+            />
+          </>
+        );
+      case 3:
+        return (
+          <>
+            <Image className='absolute translate-x-3/4' 
+              src="/images/takara03.png" alt="box" width={300} height={300}
+              sizes="(max-width: 100px)10vw, (max-width: 100px) 50vw, 33vw"
+              style={{ width: '25%', height: 'auto', bottom: "-22%", left: "55%" }}
+            />
+          </>
+        );
+      case 4:
+        return (
+          <>
+            <Image className='absolute translate-x-3/4 animate-vibrate-1' 
+              src="/images/takara04.png" alt="box" width={300} height={300}
+              sizes="(max-width: 100px)10vw, (max-width: 100px) 50vw, 33vw"
+              style={{ width: '18%', height: 'auto', bottom: "0%", left: "75%" }}
+            />
+            <Image className='absolute translate-x-3/4' 
+              src="/images/takara04-1.png" alt="box" width={300} height={300}
+              sizes="(max-width: 100px)10vw, (max-width: 100px) 50vw, 33vw"
+              style={{ width: '25%', height: 'auto', bottom: "40%", left: "53%" }}
+            />
+          </>
+        );
+      case 5:
+        return (
+          <>
+            <Image className='absolute translate-x-3/4' 
+              src="/images/takara05.png" alt="box" width={300} height={300}
+              sizes="(max-width: 100px)10vw, (max-width: 100px) 50vw, 33vw"
+              style={{ width: '20%', height: 'auto', bottom: "-5%", left: "63%" }}
+            />
+            <Image className='absolute translate-x-3/4 animate-vibrate-1' 
+              src="/images/takara05-1.png" alt="box" width={300} height={300}
+              sizes="(max-width: 100px)10vw, (max-width: 100px) 50vw, 33vw"
+              style={{ width: '15%', height: 'auto', bottom: "-15%", left: "63%" }}
+            />
+          </>
+        );
+    }
+  }
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -157,7 +225,16 @@ export default function Home() {
     <div>
       <div>問題名 {queData?.name}</div>
       <div>問 {id}/5</div>
-      <div className="text-center">{data[id - 1]?.question}</div>
+      <div className={`text-center text-7xl  ${quefonts.className} `}>{data[id - 1]?.question}</div>
+      <div className='relative'>
+        <Image className='absolute top-3/4 z-10' src={wavesimage} alt="box" width={1216} height={57} style={{ width: "100%", height: "auto"}} />
+        {imageChanger(id)}
+        <Image className='animate-slide-in-blurred-left z-0' src={kaizokuimage} alt="box" width={300} height={300} 
+        sizes="(max-width: 150px) 10vw, (max-width: 150px) 50vw, 33vw"
+        style={{ width: '17%', height: 'auto' }}
+        />
+
+      </div>
       <div
         className="grid grid-cols-1 md:grid-cols-2 overflow-hidden  p-4"
         style={{ height: '50vh' }}
@@ -180,11 +257,39 @@ export default function Home() {
                 width={100}
                 height={100}
                 className="absolute bottom-0 right-0"
+                style={{ pointerEvents: 'none' }}
               />
             </button>
           );
         })}
+
       </div>
+      <p>debug</p>
+        <Button onClick={
+          () => {
+            setId(1);
+          }
+        }>id -- 1</Button>
+        <Button onClick={
+          () => {
+            setId(2);
+          }
+        }>id -- 2</Button>
+        <Button onClick={
+          () => {
+            setId(3);
+          }
+        }>id -- 3</Button>
+        <Button onClick={
+          () => {
+            setId(4);
+          }
+        }>id -- 4</Button>
+        <Button onClick={
+          () => {
+            setId(5);
+          }
+        }>id -- 5</Button>
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
