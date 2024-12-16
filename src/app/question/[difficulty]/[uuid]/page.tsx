@@ -140,7 +140,7 @@ export default function Home() {
             <Image className='absolute translate-x-3/4 animate-vibrate-1' 
               src="/images/takara02.png" alt="box" width={300} height={300}
               sizes="(max-width: 100px)10vw, (max-width: 100px) 50vw, 33vw"
-              style={{ width: '15%', height: 'auto', bottom: "-5%", left: "70%" }}
+              style={{ width: '15%', height: 'auto', bottom: "-5%", left: "70%" , pointerEvents: 'none'}}
             />
           </>
         );
@@ -150,7 +150,7 @@ export default function Home() {
             <Image className='absolute translate-x-3/4' 
               src="/images/takara03.png" alt="box" width={300} height={300}
               sizes="(max-width: 100px)10vw, (max-width: 100px) 50vw, 33vw"
-              style={{ width: '25%', height: 'auto', bottom: "-22%", left: "55%" }}
+              style={{ width: '25%', height: 'auto', bottom: "-22%", left: "55%", pointerEvents: 'none' }}
             />
           </>
         );
@@ -160,12 +160,12 @@ export default function Home() {
             <Image className='absolute translate-x-3/4 animate-vibrate-1' 
               src="/images/takara04.png" alt="box" width={300} height={300}
               sizes="(max-width: 100px)10vw, (max-width: 100px) 50vw, 33vw"
-              style={{ width: '18%', height: 'auto', bottom: "0%", left: "75%" }}
+              style={{ width: '18%', height: 'auto', bottom: "0%", left: "75%", pointerEvents: 'none' }}
             />
             <Image className='absolute translate-x-3/4' 
               src="/images/takara04-1.png" alt="box" width={300} height={300}
               sizes="(max-width: 100px)10vw, (max-width: 100px) 50vw, 33vw"
-              style={{ width: '25%', height: 'auto', bottom: "40%", left: "53%" }}
+              style={{ width: '25%', height: 'auto', bottom: "40%", left: "53%", pointerEvents: 'none' }}
             />
           </>
         );
@@ -175,12 +175,12 @@ export default function Home() {
             <Image className='absolute translate-x-3/4' 
               src="/images/takara05.png" alt="box" width={300} height={300}
               sizes="(max-width: 100px)10vw, (max-width: 100px) 50vw, 33vw"
-              style={{ width: '20%', height: 'auto', bottom: "-5%", left: "63%" }}
+              style={{ width: '20%', height: 'auto', bottom: "-5%", left: "63%", pointerEvents: 'none' }}
             />
             <Image className='absolute translate-x-3/4 animate-vibrate-1' 
               src="/images/takara05-1.png" alt="box" width={300} height={300}
               sizes="(max-width: 100px)10vw, (max-width: 100px) 50vw, 33vw"
-              style={{ width: '15%', height: 'auto', bottom: "-15%", left: "63%" }}
+              style={{ width: '15%', height: 'auto', bottom: "-15%", left: "63%", pointerEvents: 'none' }}
             />
           </>
         );
@@ -225,15 +225,15 @@ export default function Home() {
     <div>
       <div>問題名 {queData?.name}</div>
       <div>問 {id}/5</div>
-      <div className={`text-center text-7xl  ${quefonts.className} `}>{data[id - 1]?.question}</div>
+      <div className={`text-center text-7xl pointer-events-none	 ${quefonts.className} `}>{data[id - 1]?.question}</div>
       <div className='relative'>
-        <Image className='absolute top-3/4 z-10' src={wavesimage} alt="box" width={1216} height={57} style={{ width: "100%", height: "auto"}} />
+        <Image className='absolute top-3/4 z-10' src={wavesimage} alt="box" width={1216} height={57} style={{ width: "100%", height: "auto",  pointerEvents: 'none'}} />
         {imageChanger(id)}
         <Image className='animate-slide-in-blurred-left z-0' src={kaizokuimage} alt="box" width={300} height={300} 
         sizes="(max-width: 150px) 10vw, (max-width: 150px) 50vw, 33vw"
-        style={{ width: '17%', height: 'auto' }}
+        style={{ width: '17%', height: 'auto' , pointerEvents: 'none'}}
+        
         />
-
       </div>
       <div
         className="grid grid-cols-1 md:grid-cols-2 overflow-hidden  p-4"
@@ -243,7 +243,7 @@ export default function Home() {
           return (
             <button
               key={index}
-              className="border border-orange-500 rounded-3xl p-0 m-2 relative"
+              className="border border-orange-500 rounded-3xl p-0 m-2 relative bg-slate-100 hover:"
               onClick={() => handlePress((index + 1).toString(), item)}
             >
               <p
