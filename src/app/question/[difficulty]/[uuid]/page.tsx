@@ -76,6 +76,8 @@ export default function Home() {
   const boximage = '/images/box.png';
   const wavesimage = '/images/waves.png';
   const kaizokuimage = '/images/kaizokusen.png';
+  const treasure1 = '/images/treasure1.png';
+  const treasure2 = '/images/treasure2.png';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -196,10 +198,15 @@ export default function Home() {
   if (id > dataLen) {
     return (
       <>
-        <p className="text-4xl text-center p-4">終了!!</p>
-        <p className="text-4xl text-center">5問中{count}問一発正解!!</p>
-        <p className="text-4xl text-center">{retry}回再挑戦したよ!!</p>
-        <p className="text-4xl text-center">スコア:{total}</p>
+        <div className="text-center grid grid-cols-9 grid-row-9 gap-4">
+            <div className="text-4xl lg:text-8xl col-start-1 col-end-10">スコア結果</div>
+            <div className="text-xl lg:text-5xl col-start-3 col-end-5">再挑戦回数</div>
+            <div className="text-xl lg:text-5xl col-end-8 col-span-2">{retry}回</div>
+            <div className="text-4xl lg:text-8xl col-start-3 col-end-5 row-start-9">点数</div>
+            <div className="text-4xl lg:text-8xl col-end-8 col-span-2 row-start-9">{total}点</div>
+            <Image className="col-start-1 col-end-3 row-end-10" src={treasure1} alt="xcho" width={1000} height={500} />
+            <Image className="col-start-8 col-end-10 row-end-10"src={treasure2} alt="xcho" width={1000} height={500} />
+        </div>
         <div className="text-center grig grid-cols-2">
           <Button
             className="col-span-1 m-2"
