@@ -207,14 +207,14 @@ export default function Home() {
             <Image className="col-start-1 col-end-3 row-end-10" src={treasure1} alt="xcho" width={1000} height={500} />
             <Image className="col-start-8 col-end-10 row-end-10"src={treasure2} alt="xcho" width={1000} height={500} />
         </div>
-        <div className="text-center grig grid-cols-2">
+        <div className="text-center grig grid-cols-2 text-4xl lg:text-8xl">
           <Button
             className="col-span-1 m-2"
             color="primary"
             variant="bordered"
             onClick={() => window.location.reload()}
           >
-            再挑戦する
+            もういちど
           </Button>
           <Button
             className="col-span-1 m-2"
@@ -222,7 +222,7 @@ export default function Home() {
             variant="bordered"
             onClick={() => router.push('/')}
           >
-            ホームに戻る
+            さいしょに戻る
           </Button>
         </div>
       </>
@@ -271,32 +271,7 @@ export default function Home() {
         })}
 
       </div>
-      <p>debug</p>
-        <Button onClick={
-          () => {
-            setId(1);
-          }
-        }>id -- 1</Button>
-        <Button onClick={
-          () => {
-            setId(2);
-          }
-        }>id -- 2</Button>
-        <Button onClick={
-          () => {
-            setId(3);
-          }
-        }>id -- 3</Button>
-        <Button onClick={
-          () => {
-            setId(4);
-          }
-        }>id -- 4</Button>
-        <Button onClick={
-          () => {
-            setId(5);
-          }
-        }>id -- 5</Button>
+      
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
