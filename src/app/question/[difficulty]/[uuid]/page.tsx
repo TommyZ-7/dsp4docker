@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { League_Gothic, Noto_Sans_JP } from 'next/font/google';
 
 import { useRouter } from 'next/navigation';
+import clsx from 'clsx';
 
 import {
   Modal,
@@ -208,22 +209,18 @@ export default function Home() {
             <Image className="col-start-8 col-end-10 row-end-10"src={treasure2} alt="xcho" width={1000} height={500} />
         </div>
         <div className="text-center grig grid-cols-2 text-4xl lg:text-8xl">
-          <Button
-            className="col-span-1 m-2"
-            color="primary"
-            variant="bordered"
+          <button
+            className="col-span-1 m-2 p-4 bg-emerald-300 hover:bg-emerald-500 border rounded-3xl"
             onClick={() => window.location.reload()}
           >
             もういちど
-          </Button>
-          <Button
-            className="col-span-1 m-2"
-            color="primary"
-            variant="bordered"
+          </button>
+          <button
+            className="col-span-1 m-2 p-4 bg-red-300 hover:bg-red-500 border rounded-3xl"
             onClick={() => router.push('/')}
           >
             さいしょに戻る
-          </Button>
+          </button>
         </div>
       </>
     );
@@ -280,6 +277,9 @@ export default function Home() {
         backdrop="blur"
         hideCloseButton={true}
         placement="center"
+        classNames={{
+          backdrop: clsx(isCorrect && 'bg-atari', !isCorrect && 'bg-hazure'),
+        }}
       >
         <ModalContent>
           {(onClose) => (

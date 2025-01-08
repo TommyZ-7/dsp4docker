@@ -13,6 +13,8 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        "hazure": "url('/images/bakuhatsu.png')",
+        "atari": "url('/images/kaizoku_takara.png')",
       },
       animation: {
         "vibrate-1": "vibrate-1 4s linear  infinite both",
