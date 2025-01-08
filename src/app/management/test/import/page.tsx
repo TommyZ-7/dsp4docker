@@ -39,6 +39,7 @@ export default function Home() {
     ['', '', '', ''],
   ]);
   const [sendDate, setSendDate] = useState<Action[]>([]);
+  const [comment, setComment] = useState<string>('');
 
   const router = useRouter();
 
@@ -125,7 +126,7 @@ export default function Home() {
     }
     const info = {
       name: queName,
-      comment: '',
+      comment: comment,
       difficulty: difficulty,
       creator: creatorName,
       grade: grade,
